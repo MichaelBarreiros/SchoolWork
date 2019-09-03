@@ -1,0 +1,396 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{url}
+
+\oddsidemargin -10mm
+\evensidemargin -10mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+%% Comments
+
+\usepackage{color}
+
+\newif\ifcomments\commentstrue
+
+\ifcomments
+\newcommand{\authornote}[3]{\textcolor{#1}{[#3 ---#2]}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\else
+\newcommand{\authornote}[3]{}
+\newcommand{\todo}[1]{}
+\fi
+
+\newcommand{\wss}[1]{\authornote{blue}{SS}{#1}}
+
+\title{Assignment 4, Part 1, Specification}
+\author{SFWR ENG 2AA4}
+
+\begin {document}
+
+\maketitle
+This Module Interface Specification (MIS) document contains modules, types and
+methods for implementing the state of Conway's the game of life.
+
+\newpage
+
+\section* {Board Types Module}
+
+\subsection*{Module}
+
+BoardTypes
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+MAX\_DIMENSIONS = 20
+
+\subsubsection* {Exported Types}
+
+Status = \{Alive, Dead\}\\ 
+CardT = tuple of (s: Status)
+
+\subsubsection* {Exported Access Programs}
+
+None
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\newpage
+
+\section* {Console Output Module}
+
+\subsection* {Module}
+
+Output
+
+\subsection* {Uses}
+
+BoardTypes
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+print & seq of seq of Cell, $\mathbb{N}$ &  & none\\
+\hline
+
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+\begin{itemize}
+\item The decision to add a natural number parameter to the print function was 
+  made for the possible scenario of indicating on the console what generation
+  is being printed.
+\item The design decision of having console output be a seperate module than
+  the module responsible for reading and writing to and from a file was made.
+  This decision was made to enforce the idea of seperation of concerns. The
+  output to the screen may be different than that of the output file.
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+print($universe$, $n$):
+\begin{itemize}
+\item output: The current generation given by $n$ is outputted to the console
+followed by seq of seq of Cell.
+\item exception: none
+\end{itemize}
+
+\newpage
+
+\section* {File Read And Write Module}
+
+\subsection* {Module}
+
+ReadAndWrite
+
+\subsection* {Uses}
+
+BoardTypes
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{8cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+read & string & seq of seq of Cell & runtime\_error, invalid\_argument\\
+\hline
+write & seq of seq of Cell, string &  & none\\
+\hline
+
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+\begin{itemize}
+\item The decision to add a string parameter to the read and write functions was made
+  to allow for the user to have potentially multiple files that they'd want to 
+  start multiple games from and write them all to individual files without the risk
+  of overwritting previously written to files.
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+read(file):
+\begin{itemize}
+\item output: file gets read. Data from file is in the following format, 
+$C_0, C_1, C_2, ..., C_M$ where C is an ASCII character either "\#" or "\_",
+where "\#" represents a live cell and "\_" represents a dead cell. 
+There must be $MAX\_DIMENSIONS * MAX\_DIMENSIONS$ number of cells. 
+The input file must have MAX\_DIMENSIONS number of rows with MAX\_DIMENSIONS number of columns.
+
+While parsing through the data a seq of seq of Cell is built and returned.
+  
+
+\item exception: runtime\_error if file does not exist \\
+				 invalid\_argument if number of rows or number of columns does not equal MAX\_DIMENSIONS
+\end{itemize}
+
+\noindent write($universe$, file):
+\begin{itemize}
+\item output: A new file is created with the name specified by the file parameter. The format of this file
+is the same as the input file used in the read function. $universe$ is parsed through, a cell that is alive
+is associated with "\#" in the output file and a cell that is dead is associated with "\_". 
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {GameBoard ADT Module}
+
+\subsection*{Template Module}
+
+GameBoard
+
+\subsection* {Uses}
+
+BoardTypes
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+GameBoard  &  & GameBoard & \\
+\hline
+GameBoard & Universe & GameBoard & \\
+\hline
+hasNeighbours & $\mathbb{N}$, $\mathbb{N}$ & $\mathbb{B}$ & invalid\_argument\\
+\hline
+numOfNeighbours & $\mathbb{N}$, $\mathbb{N}$ & $\mathbb{N}$ & invalid\_argument\\
+\hline
+getCell & $\mathbb{N}$, $\mathbb{N}$ & Cell & invalid\_argument\\
+\hline
+getUniverse & & Universe & \\
+\hline
+nextState &  & & \\
+\hline
+gameOver & & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$U$: Universe
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+\begin{itemize}
+
+\item The GameBoard constructor is called before any other access
+  routine is called on that instance. Once a GameBoard has been created, the
+  constructor will not be called on it again.
+
+\item Cells at edges of the GameBoard only have neighbouring cells in the
+Gameboard that is visible. That is, there aren't any cells outside of the
+visible Gameboard. This is not an infinitely sized board.
+
+\item For better scalability, this module is specified as an Abstract Data Type
+  (ADT) instead of an Abstract Object. This would allow multiple games to be
+  created and tracked at once by a client.
+
+\item The getter function is provided, though violating the property of being
+  essential, to give a view function easy access to the state of the
+  game.
+  
+\item The hasNeighbours function violates minimality as I could use 
+numOfNeighbours and check if it returns zero but having this function would 
+prove useful in reducing computation time for larger gameboards. This
+function could act as a short-circuit of sorts when computing the nextState.
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+GameBoard():
+\begin{itemize}
+\item transition: $U :=$ init\_uni()
+\item exception: None
+\end{itemize}
+
+\noindent GameBoard(universe):
+\begin{itemize}
+\item transition: $U :=$ universe
+\item exception: None
+\end{itemize}
+
+\noindent hasNeighbours($n, m$):
+\begin{itemize}
+\item output: $out :=$
+$(\exists x, y  : \mathbb{Z} | -1 \leq x \leq 1 \land - 1 \leq y \leq 1 : U[n+x][m+y].s = Alive)$
+
+\item exception: $exc := (n \ge \text{HEIGHT} \lor  m \geq \text{WIDTH} \Rightarrow \text{invalid\_argument})$
+
+\end{itemize}
+
+\noindent numOfNeighbours($n, m$):
+\begin{itemize}
+\item output: $out :=$
+$(+ x, y  : \mathbb{Z} | -1 \leq x \leq 1 \land - 1 \leq y \leq 1 \land $U$[n+x][m+y].s = Alive : 1)$
+
+\item exception: $exc := (n \ge \text{HEIGHT} \lor  m \geq \text{WIDTH} \Rightarrow \text{invalid\_argument})$
+
+\end{itemize}
+
+\noindent getCell($n, m$):
+\begin{itemize}
+\item output: $out := U[n][m]$
+
+\item exception: $exc := (n \ge \text{HEIGHT} \lor  m \geq \text{WIDTH} \Rightarrow \text{invalid\_argument})$
+
+\end{itemize}
+
+\noindent getUniverse():
+\begin{itemize}
+\item output: $out:= U$
+\item exception: None
+\end{itemize}
+
+\noindent nextState():
+\begin{itemize}
+\item transition: $U := N$ : Universe such that \\
+$(\forall x,y : \mathbb{N} | \\
+				x,y < \text{MAX\_DIMENSIONS} \land (U[x][y].s = Alive \land ((\text{numOfNeighbours}(x,y) = 3 \lor \text{numOfNeighbours}(x,y) = 2)) 
+				\lor (U[x][y].s = Dead \land \text{numOfNeighbours}(x,y) = 3))
+				\Rightarrow N[x][y].s = Alive\\
+				| True \Rightarrow N[x][y].s = Dead)$
+\item exception: None
+\end{itemize}
+
+\noindent gameover():
+\begin{itemize}
+\item output: $out := \neg(\exists n, m : \mathbb{N} | n < \text{MAX\_DIMENSIONS} \land m < \text{MAX\_DIMENSIONS} : U[n][m].s = Alive)$
+\item exception: None
+\end{itemize}
+
+\subsection*{Local Types}
+
+Universe = seq of seq of Cell\\
+WIDTH = MAX\_DIMENSIONS\\
+HEIGHT = MAX\_DIMENSIONS
+
+\subsection*{Local Functions}
+
+$\text{init\_uni}:  \rightarrow \text{Universe}$\\
+\noindent $\text{init\_seq}() \equiv u \text{ such that } (|u| = \text{MAX\_DIMENSIONS} \land (\forall\, i
+\in [0..\text{MAX\_DIMENSIONS}-1] : u[i] = v \text{ such that } (|v| = \text{MAX\_DIMENSIONS} \land (\forall\, j
+\in [0..\text{MAX\_DIMENSIONS}-1]: v[j].s = Dead$
+
+\newpage
+
+\section*{Critique of Design}
+
+The design takes a functional approach to the task of creating the Model and View modules for playing Conway's Game of Life. 
+The design is consistent, that is given an input no matter how many times the game is run with that input, the output will always
+be the same. For essentiality I have violated it in some locations of this MIS. I have violated it for GameBoard's getCell and getUniverse
+function as these are needed for testing purposes and for the view of the game's state. Minimality was violated for having a seperate module 
+for printing to the console, I could have done this in the ReadAndWrite module but chose to keep seperation of concerns in mind and also
+information hiding in mind. I wanted to hide the "secrets" of the way i printed to the console and seperate that from the way I outputted
+to a txt file. For generality, my MIS fails. I chose to write an MIS dedicated to the task of having a Model and View of Conway's Game of Life.
+I could have made my MIS more general by having a generic output and a generic read and write. I'm not sure how I would make the GameBoard 
+module more generic. For minimality as a whole I attempted to keep the amount of unneccessary functions to a minimum. Cohesion is decent
+in the MIS, every module depends on BoardTypes, besides BoardTypes of course, but other than being dependant on BoardTypes the other 
+modules are independed from one another. 
+
+\end {document}

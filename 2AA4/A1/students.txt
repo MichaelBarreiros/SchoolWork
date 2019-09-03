@@ -1,0 +1,4 @@
+{"barreirm", "michael", "barreiros", "male", 9.0, ["software", "mechanical", "electrical"]}
+{"teststdnt1", "joe", "shmoe", "MALe", 6.0, ["materials", "engphys", "civil"]}
+{"teststdnt2", "kate", "makabali", "feMALe", 9.0, ["chemical", "mechANIcal", "CIVIL"]}
+{"teststdnt3", "bella", "alleb", "FEMALE", 4.7, ["electrical", "software", "engphys"]}

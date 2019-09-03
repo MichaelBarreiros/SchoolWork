@@ -1,0 +1,1 @@
+chemical 1 ciVil: 110 electrical  100 MECHANICAL, 230 software: 200 materials 50 engphys,  70

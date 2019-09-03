@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{booktabs}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{Assignment 1 Solution}
+\author{Michael Barreiros barreirm}
+\date{\today}
+
+\begin {document}
+
+\maketitle
+
+The purpose of the program created in Assignment 1 was to read and process data from first-year engineering students
+and to allocate them into one of their three choices if possible.
+
+\section{Testing of the Original Program}
+
+The rationale for my test cases for the module CalcModule was that all problems that might have occurred during reading data were dealt
+with in the ReadAllocationData module. 
+
+Some problems could have been that:
+\begin{itemize}
+
+\item GPAs are out of the 0.0-12.0 range
+\item Choices were not of the choices available
+\item Any issues with capitalization 
+\item Any mismatch of data types or invalid input
+
+\end{itemize}
+
+With this in mind my CalcModule passed all my test cases. My testCalc Module had 10 test cases.
+
+\subsection {Testing for Average}
+
+This includes 4 tests. Testing the average of a student list for each gender. Then testing the average of a student list where no member of 
+the gender exists, again this was done for each gender. An assumption was made when testing for the average of a gender with no members that 
+the average function would return 0 and not None.
+
+\subsection {Testing for Sort}
+
+This includes 4 tests. Testing for the sorting of students all with unique GPAs. Testing for students with some of the students sharing the same 
+GPA. It is assumed that students with the same GPA get sorted in the way they appear in the original student list. Next, I tested the sorting on
+an empty list, the expected result was an empty list. The last test for Sort was testing an already sorted list. The expected result is to have 
+the same list returned.
+
+\subsection {Testing for Allocate}
+
+This includes 2 tests. The first test really was testing many things. The first test of allocation tested for the allocation of a free choice
+student that has a GPA lower than someone without free choice, it is expected that the free choice student gets allocated first.
+The next test here tested the allocation of a student with a 4.0 GPA, I made the assumption that any student with a GPA lower than or equal to 
+a 4.0 does not get allocated. The next test here tested to see what would happen when students apply for a department with not enough space to 
+accommodate everyone. I made the assumption that even if a department goes over capacity with all free choice students the department cannot 
+allocate more students than their initial capacity. Therefore in this test, we expect any student applying for a department who has reached their 
+capacity to move on to their next choice. The final test here was to test what happens when a free choice student has a GPA below 4.0. As stated
+earlier before we expect all students with a GPA at or below a 4.0 to not get allocated, this includes students with free choice.
+The second test was a test for the allocation of zero students, the expected result was a dictionary with departments as keys and an empty list
+as each of the key's value.
+
+\section{Results of Testing Partner's Code}
+
+\subsection{First Attempt}
+
+I was unable to test my partner's code because he implemented two modules named al\_constants.py and al\_utility.py.
+My partner used al\_contants to implement MIN\_GPA, MAX\_GPA, MIN\_PASSING\_GPA, GENDERS functions.
+My partner used al\_utility to implement the remove\_duplicates.
+
+
+\subsection{Second Attempt}
+Steps taken to get the program to run:
+\begin{enumerate}
+
+\item Commented out the two lines of import statements
+\item Made variables for MIN\_GPA, MAX\_GPA, MIN\_PASSING\_GPA with values 0.0, 12.0, and 4.0 respectively
+\item Commented out remove\_duplicates(students) from the function allocate(S, F, C)
+
+\end{enumerate}
+
+The program ran, three of my tests failed. 
+
+The tests that failed include: 
+\begin{enumerate}
+
+\item Testing for male average when there exists no males
+\item Testing for female average when there exists no females
+\item Testing allcation of students. The particular part that failed was the allocation of a student with a 4.0 GPA 
+
+\end{enumerate}
+
+\section{Discussion of Test Results}
+
+\subsection{Problems with Original Code}
+
+Through my test cases, my code passed every one of them. I cannot say that there are zero problems based on my code because a lot of the 
+reasoning behind the decisions made on how to code something or what to do in a certain scenario came from assumptions that I had to make.
+
+I would say that the majority of problems arise from ReadAllocationData and the assumptions I had to make when creating the needed
+functions. 
+
+For readStdnts, the assumption was made that in the file every student appeared in a new line and had entries for "macid 
+fname lname gender GPA choice1 choice2 choice3" only appearing in that exact order with spaces between each entry and did not include the
+key's needed for their dictionary counterparts. This meant that I did not expect "madId: barreirm" I expected only "barreirm". When 
+creating the function I also accounted for some special characters like "\{", "\}", """, ",", "[", and "]". 
+
+For readFreeChoice, the assumption that was made was that only students with free choice appear in the file and that the student's macId is
+in the file. They could all be on one line but must be separated by at least one space, they could also all be on separate lines. 
+
+For readDeptCapacity the assumption that was made was that in the input file the department's name comes first then the capacity for that
+department separated by at least one space. Data entries could all be on separate lines or on one line or a mixture of the two options. 
+This function accounted for some special characters like ":" and tabbing. If I were to return to this function I would have accounted for 
+"\{" and "\}" just in case the incoming file tried to structure their data like a dictionary already.
+
+
+\subsection{Problems with Partner's Code}
+
+My partner's CalcModule failed three of my tests. The reason for failing the first two items on the list of failed tests was that 
+my partner returned None rather than 0 when there were no members of the gender that you were trying to find the average for. This wasn't 
+a problem with the code just a difference in assumptions.
+
+The third item on the list of failed tests occurred because my partner assumed that students that have a 4.0 GPA still get allocated while I
+made the assumption that they do not. Again, this was not a problem with their code, just a difference of assumptions. I made the assumption 
+based on the design specifications for the function allocate(S,F,C) where it states "The algorithm for the allocation will allocate all 
+students with a GPA greater than 4.0." I interpreted that as meaning anyone that doesn't have a GPA greater than 4.0, this includes 4.0, will
+not get allocated.
+
+\section{Critique of Design Specification}
+
+One general critique of the design specifications is that it was very ambiguous and it required the designer to make a lot of assumptions. 
+If this was a one person project then it might not be a big deal but if it were a project where many people were working on it and their 
+individual modules or programs had to work together then all ambiguities must be dealt with in the design specification. Through testing my
+own program and testing someone else's program I can see that we made different assumptions in some cases which resulted in different outputs
+in some scenarios. 
+
+I think that the for ReadAllocationData the design specification should have told us exactly what to expect as input when it comes to the
+structure of the file and the data within each file. This would allow us to deal with the incoming data appropriately. This would make the 
+process of creating this method less tedious because we wouldn't have to think about all possible scenarios of incoming data and how we would
+deal with it if ever encountered. 
+
+For CalcModule the design specification should have made it more clear what to do when encountering certain scenarios such as what to do with
+a student who has a GPA of exactly 4.0. Another thing that the design specification should have told us is what happens when free choice
+students all apply to a certain department and go over its capacity. It should tell us whether or not the department would allow for its 
+capacity to increase since a promise was made to free choice students that they will get their first choice. Another thing that should be
+specified is what to return when computing the average when there is no population for that gender, is it 0? Is it None? Another ambiguity
+is what happens to students where all three choices are filled. Do they get allocated to a random department that has space? If so how does the
+randomization of departments occur? Do they get a list of open departments to make a new list of choices and then start the allocation process 
+again with other students who did not get allocated?
+%\newpage
+
+\section{Answers to Questions}
+
+\begin{enumerate}[(a)]
+
+\item I would make average(L,g) more general by allowing for the computation of average to occur over different filters. Meaning I would allow
+for the computation of average for a certain department or based on student's first choice. I would also allow to compute the average of students
+who's first name begin with a certain letter. The same could be said for their macid's and their last name. As for sort I would allow for the
+option of sorting in increasing or decreasing order. I would also include the ability to sort by more than just by GPA. I would allow for the
+ability to sort be alphabetical order for all options of macid, first name, or last name. I would also allow for the ability to sort by the first 
+choice. With all of this I would also allow for the combination of different kinds of sorting. Such as sorting first by the department that is 
+their first choice then sort by GPA. 
+
+\item Aliasing in this context means having different variables referring to the same dictionary. The dictionary referred to by the two variables
+is said to have two aliases. Since dictionaries are mutable data structures this can be a concern. If you try to copy a dictionary by simply
+creating a new dictionary this may cause problems. If you change the values of keys or add/delete keys in this new "copy" it will affect the
+original dictionary that you tried to copy as well. In order to guard against this one would use deepcopy in order to create a completely 
+independent copy of the dictionary. 
+
+\item A potential test case would have been reading students for readStdnts who's data weren't in the right location, such as their GPA being where
+fname should be or if some entries were empty, such as not having a third choice. A potential test case for all three functions would have been to 
+test for garbage input. This could include random characters or incorrect department names. A potential test case for all three functions could have
+been to read from an empty file. Another test could have been to try to read from a file that does not exist. I believe CalcModule.py was selected
+over ReadAllocationData.py as the one we should test because there were fewer variations and assumptions that would have to be made when 
+creating the CalcModule module. Also, a lot of the "user" input errors that would have to be considered when testing ReadAllocationData don't exist when 
+testing for CalcModule since the assumption is made that all "user" input errors were taken care of in ReadAllocationData.
+
+\item The problems with using strings in this way is that the key or the value would have to be inputted exactly as it is shown in the dictionary
+and would allow for zero variations such as a capital letter in the wrong position. A better approach would be to use named tuples like Professor 
+Smith suggested in class. This allows us to create a set of key values to be used for the keys of our dictionary and in the 'male', 'female' example
+this allows us to create a set of expected values for gender and we can access that set by having the fieldname of the set be gender.
+
+\item The mathematic definition of a tuple is a collection of elements of possibly different types. Each tuple has one or more fields and each field
+has a unique identifier called the field name. By this definition, dictionaries, named tuple, and a custom class all can be used to implement the 
+mathematical notion of tuples in python. I would recommend changing students to namedtuple instead of a dictionary. Each student's choices can be 
+implemented using a namedtuple. I think that changing to namedtuples is a good idea because the students and their choices will not change after 
+creation so that the fact that tuples are immutable.
+
+\item If the list of strings was changed to a different data structure, like a tuple, then CalcModule wouldn't have to be modified as I iterated over 
+the entries of the list. You iterate over the entries of a tuple in the same way. I have never worked with tuples but that is my understanding. I do
+not believe that a custom class would have to be modified if its data structure changed. The way I coded my scan through the students' choices was by
+running a for loop that iterated over the first three indexes of the choice's list. If a custom class were to return true when trying to access a choice
+that is not there then it would not change anything since I would never be reaching that point.
+
+\end{enumerate}
+
+\newpage
+
+\lstset{language=Python, basicstyle=\tiny, breaklines=true, showspaces=false,
+  showstringspaces=false, breakatwhitespace=true}
+%\lstset{language=C,linewidth=.94\textwidth,xleftmargin=1.1cm}
+
+\def\thesection{\Alph{section}}
+
+\section{Code for ReadAllocationData.py}
+
+\noindent \lstinputlisting{../src/ReadAllocationData.py}
+
+\newpage
+
+\section{Code for CalcModule.py}
+
+\noindent \lstinputlisting{../src/CalcModule.py}
+
+\newpage
+
+\section{Code for testCalc.py}
+
+\noindent \lstinputlisting{../src/testCalc.py}
+
+\newpage
+
+\section{Code for Partner's CalcModule.py}
+
+\noindent \lstinputlisting{../partner/CalcModule.py}
+
+\newpage
+
+\section{Makefile}
+
+\lstset{language=make}
+\noindent \lstinputlisting{../Makefile}
+
+\end {document}

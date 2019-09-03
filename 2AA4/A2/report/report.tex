@@ -1,0 +1,275 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{booktabs}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{Assignment 2 Solution}
+\author{Michael Barreiros, barreirm}
+\date{\today}
+
+\begin {document}
+
+\maketitle
+
+The purpose of the program created in Assignment 2 was to read and process data from first-year engineering students and allocate them
+into one of their choices.
+
+\section{Testing of the Original Program}
+
+The test\_All.py module was to only test SeqADT, DCapALst, and SALst. AALst and StdntAllocTypes are tested as a biproduct of these test cases.
+The module that was not tested was the Read.py module as there would be too many test cases that would need to be created.
+
+The tests in the test\_All module tested for base cases, such as empty sets or initialization, tested all methods and tested for all 
+proper calls of exceptions. Tests also tested for proper return values/expected values.
+
+With this in mind, test\_All.py had 32 test cases and my code passed all test cases. The coverage for my test cases not including
+Read.py or A2Examples.py was 98.33\%.
+
+\subsection{Testing SeqADT}
+
+SeqADT had 11 tests in total:
+\begin{itemize}
+	\item Init was tested 3 times, once with None as the input and checking if s was None another test to check that i was 0
+	in this case. The third test was testing if given a list of integers would s return that same list of integers. 
+	
+	\item Start was tested 2 times, one test was checking if start was called right from the start that it would return zero. The other
+	test was checking if next was called a few times then start was called that it would again return zero.
+	
+	\item Next was tested 4 times, 3 of the tests were making sure that the correct department was returned when calling next on a known
+	list of departments. The fourth test was checking that the StopIteration exception would raise if next was called too many times and 
+	would have gone out of bounds of the sequences.
+	
+	\item End was tested 2 times, one test checked to see that if end was called when we haven't reached the end of the sequence then it
+	returned false. The other test was checking that it indeed returned true if we reached the end of the sequence.
+
+\end{itemize}
+	
+\subsection{Testing DCapALst}
+
+DCapALst had 8 tests in total:
+\begin{itemize}
+	\item Init was tested 1 time. The test was checking that when DCapALst was initiated that s is an empty dictionary, {}. 
+	
+	\item Add was tested 2 times, one tested for the correct output when calling DCapALst.s after adding two unique departments. The other
+	test checked to see if the KeyError exception raised when trying to add a department that already exists in s.
+	
+	\item Remove was tested 2 times, one test checked to see after adding a department to an empty s, then removing the same department, 
+	if s was empty once again. The next test checked to see if the KeyError exception was raised when attempting to remove a department
+	that was not in s.
+	
+	\item Elm was tested 1 time to see after adding a department to s then calling elm for that department if it returned true. Another 
+	test should have been added to see if elm was called for a department that was not in s if it returned false as expected.
+	
+	\item Capacity was tested 2 times, one test checked to see after a department was added to s if the correct capacity was returned when
+	checking the capacity of that department. The other test checked to see if the KeyError exception was raised when attempting to check
+	the capacity of a department that does not exist in s.
+	
+\end{itemize}
+
+\subsection{Testing SALst}
+
+SALst had 13 tests in total:
+\begin{itemize}
+	\item Init was tested 1 time. The test was checking that when SALst is initiated that s is an empty dictionary, {}.
+	
+	\item Add was tested 2 times, one test checked to see after a student was added to an empty dictionary if s contained that student
+	formatted in the appropriate way. The second test checked to see if the exception KeyError was raised if attempting to add a student
+	that already exists in s.
+	
+	\item Remove was tested 2 times, one test checked to see after a student was added to an empty s then removed from s if s was empty 
+	once again. The second test checked to see if the exception KeyError was raised if attempting to remove a student that does not exist
+	in s.
+	
+	\item Sort was tested 2 times, one test checked to see after adding 4 unique students to s then attempting to sort s by filtering
+	out students that do not have free choice and that do not have a gpa above 4.0 and then sort by gpa if the output for that is as expected.
+	The second test checked to see after sorting an s that is empty if an empty list will be returned.
+	
+	\item Average was tested 2 times, one test checked to see if after adding 4 unique students to s if the average returned is the expected
+	average. The second test checked to see if the ValueError exception was raised after attempting to get the average when there is no members
+	for the gender we ask for.
+	
+	\item Allocate was tested 4 times, one test checked to see after adding 2 departments and 4 students if students were properly allocated 
+	to one of the departments. This test checked also to see if free choice students took precedence over non free choice students. The second
+	test checked to see after adding 2 departments and no students if after running allocate the department's allocation list was empty. The 
+	third test checked to see after adding 2 departments with 0 capacity and 1 student with no free choice and then trying to run allocate if
+	the RuntimeError exception was raised. The fourth test checked to see after adding 2 departments and 3 students if everyone was allocated 
+	as expected. 
+
+\end{itemize}
+
+\newpage
+
+\section{Results of Testing Partner's Code}
+
+Testing my partner's code with my test module resulted in 12 failed and 20 passed tests. 
+
+\noindent Discussion of failed tests:
+\begin{itemize}
+	\item test\_SeqADT\_init(1 through 3), and test\_SeqADT(1 and 2) failed because my partner named their state variables with the double
+	underscore prefix while I did not use the double underscore prefix. When attempting to compare the state variable i or s to something
+	the test would fail since I am not trying to access the state variables with the double underscore prefix.
+	
+	\item test\_DCapAList\_init1 failed because my partner chose to represent an empty set using set() while I chose to represent an empty 
+	set as {}, so when comparing set() to {} they are not equal and therefore fails my test.
+	
+	\item test\_DCapAList\_add1 failed because my partner used a NamedTuple to represent a department and capacity pair while I used the 
+	dictionary's method of adding entries. I feel as though my partner's method of creating a class for the NamedTuple is more effective
+	as it leaves the data less ambiguous.
+	
+	\item test\_DCapAList\_remove1 failed for the same reason test\_DCapAList\_init1 failed. We represented out empty sets differently.
+	
+	\item test\_SALst\_allocate(1 through 4) failed because of the way we implemented a tuple of (dept: DeptT, cap: N). By making 
+	a seperate class to represent the tuple I was unable to compare it directly to my implementation of the tuple as a dictionary with
+	the dept as the key and the cap as the value. This difference in implementation is what caused the failure. 
+\end{itemize}
+
+I will not be attempting to "fix" these failures as the reason for these failures are due to the implementation differences for tuples and
+for naming of state variables as well as how we describe an empty set. 
+
+The test cases that passed are expecting values that were described in the specification, such as an int or a list of strings. When the 
+expected output was not ambiguous, such as the structure of our sequences when outputted or even internally in the code, the test cases failed. 
+
+\newpage
+
+\section{Critique of Given Design Specification}
+
+Advantages and disadvantages of the given design specification.
+
+\subsection{Advantages}
+The advantages of the given design specification is that there was very little ambiguity and allowed for a more robust program. 
+I liked how we were given how to handle exceptions, what to include and what not to include by religously following the design
+specification. Making seperate classes to handle abstract data types was interesting and taught me a lot about coding in python and
+abstraction in code in general. Modularity was key here in this design specification with each module's methods doing only one task
+which made it easier to debug. The mathematical specification was appreciated since we could read the specification and understand what it 
+was trying to describe with no questions asked. Overall I believe the design specification was very good and I appreciate the time the professor
+put in making such a detailed design specification.
+
+\subsection{Disadvantages}
+There are very little disadvantages. The design specification did not tell us how to implement a tuple exactly and after testing my partner's code 
+it was clear that other people implemented tuples differently which caused some problems during testing. The only other disadvantage that I can 
+think of is that the specification was so dependent on our understanding of discrete math and mathematical specifications that reading what exactly
+the specification was asking for and deciphering it took a lot of time. 
+
+\newpage
+
+\section{Answers}
+
+\begin{enumerate}[a]
+
+\item Natural language leaves room for creative freedom, if you understand how to code you can code however you'd like. However, when it comes
+to ambiguities and handling them this is where natural language specification breaks down. If you need to test your code or if somebody else 
+has to test your code then they might not know how you implemented your code potentially resulting in failed test cases even though your 
+program behaves the way that you expect it to. The formal specification is better in my opinion, it tells us how and when to handle exceptions,
+it tells us exactly how it expects the program to behave and it makes testing and coding easier if you can understand the specification. A
+disadvantage for formal specification is that it is formal, reading the specification takes time and knowledge on how to interpret all the
+symbols. 
+
+\item The specification would handle this in the Read.py module. Either it will throw an expection while reading if it encounters a student
+whose gpa does not fall in the range or it does not include that student. The exact exception that gets thrown is something that I am not 
+sure about, maybe the RuntimeError exception gets raised. I do not think that we would need to modify the specification to replace a record
+type with a new ADT because we would not be changing the student after it gets recorded, so there is no need for an ADT to describe students.
+
+\item The specification could include another module maybe named ALst that does the functions that are similar in both SALst and DCapALst
+so that we can reduce the lines of code that we have to write and also to increase modularity in our program. 
+
+\item A big reason that A2 is more general than A1 is the presence of abstract data types and abstract objects. These are general things that 
+we fill with data to create unique things but in the case of abstract data types we can create multiple instances of them simply with one 
+class.  
+
+\item The advantages of using a SeqADT instead of a python list is that we can create our own functions for traversing the list of choices
+and checking if the list has reached the end so that we do not go out of bounds. By using SeqADT we can handle exceptions easier because we
+have created functions that we know we can use to restart the iterator, or move to the next choice, or check if we reached the end of the 
+sequence. We can also declare that when reading choices the elements of SeqADT have to be of type DeptT which is something we cannot do 
+with a python list. 
+
+\item Enums allow us to specify what we expect in our data types. In the case of DeptT we can declare that there are only 7 departments and 
+enumerate them 1 through 7. With enums we do not have to account for potential string mismatching when testing for a certain department, as in
+the difference between "civil" and "Civil". String mismatching could be a problem that arises when trying to allocate a student to their
+choices, if a student's choice is a string we would have to try to force it into a known format perhaps using toLowerCase() in order to properly
+allocate that student. Another advantage is that enums provide safety, by limiting the values a variable can have we lessen the chance that when
+the program runs it won't have odd behaviour, instead the compiler would tell us that we have a type mismatch or something along those lines.
+Enums were not used for a student's macid because a macid is unique to every student. An enum declares what values something can have. If we 
+were to implement macids as an enum then it would be a long enum consisting of every macid which makes little sense when we can just say that 
+macid is a string and effectively have the same result with a lot less headache.
+
+\end{enumerate}
+
+\newpage
+
+\lstset{language=Python, basicstyle=\tiny, breaklines=true, showspaces=false,
+  showstringspaces=false, breakatwhitespace=true}
+%\lstset{language=C,linewidth=.94\textwidth,xleftmargin=1.1cm}
+
+\def\thesection{\Alph{section}}
+
+\section{Code for StdntAllocTypes.py}
+
+\noindent \lstinputlisting{../src/StdntAllocTypes.py}
+
+\newpage
+
+\section{Code for SeqADT.py}
+
+\noindent \lstinputlisting{../src/SeqADT.py}
+
+\newpage
+
+\section{Code for DCapALst.py}
+
+\noindent \lstinputlisting{../src/DCapALst.py}
+
+\newpage
+
+\section{Code for AALst.py}
+
+\noindent \lstinputlisting{../src/AALst.py}
+
+\newpage
+
+\section{Code for SALst.py}
+
+\noindent \lstinputlisting{../src/SALst.py}
+
+\newpage
+
+\section{Code for Read.py}
+
+\noindent \lstinputlisting{../src/Read.py}
+
+\newpage
+
+\section{Code for test\_All.py}
+
+\noindent \lstinputlisting{../src/test_All.py}
+
+\newpage
+
+\section{Code for Partner's SeqADT.py}
+
+\noindent \lstinputlisting{../partner/SeqADT.py}
+
+\newpage
+
+\section{Code for Partner's DCapALst.py}
+
+\noindent \lstinputlisting{../partner/DCapALst.py}
+
+\newpage
+
+\section{Code for Partner's SALst.py}
+
+\noindent \lstinputlisting{../partner/SALst.py}
+
+\end {document}

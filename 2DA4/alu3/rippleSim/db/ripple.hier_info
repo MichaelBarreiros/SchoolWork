@@ -1,0 +1,55 @@
+|ripple
+x[0] => x[0].IN1
+x[1] => x[1].IN1
+x[2] => x[2].IN1
+y[0] => y[0].IN1
+y[1] => y[1].IN1
+y[2] => y[2].IN1
+z[0] <= fulladder:stage0.port3
+z[1] <= fulladder:stage1.port3
+z[2] <= fulladder:stage2.port3
+z[3] <= fulladder:stage2.port4
+
+
+|ripple|fulladder:stage0
+Cin => z2.IN0
+Cin => z3.IN0
+Cin => comb.IN1
+x => z1.IN0
+x => z2.IN1
+x => z4.IN0
+y => z1.IN1
+y => z3.IN1
+y => z4.IN1
+s <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ripple|fulladder:stage1
+Cin => z2.IN0
+Cin => z3.IN0
+Cin => comb.IN1
+x => z1.IN0
+x => z2.IN1
+x => z4.IN0
+y => z1.IN1
+y => z3.IN1
+y => z4.IN1
+s <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ripple|fulladder:stage2
+Cin => z2.IN0
+Cin => z3.IN0
+Cin => comb.IN1
+x => z1.IN0
+x => z2.IN1
+x => z4.IN0
+y => z1.IN1
+y => z3.IN1
+y => z4.IN1
+s <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+

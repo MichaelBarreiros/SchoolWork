@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at combinationalLock.v(68): always construct contains both blocking and non-blocking assignments File: D:/School Work/SFWRENG 2DA4/combinationalLock/combinationalLock.v Line: 68
+Info (10281): Verilog HDL Declaration information at combinationalLock.v(5): object "y" differs only in case from object "Y" in the same scope File: D:/School Work/SFWRENG 2DA4/combinationalLock/combinationalLock.v Line: 5

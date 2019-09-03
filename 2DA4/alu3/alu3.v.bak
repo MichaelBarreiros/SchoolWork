@@ -1,0 +1,23 @@
+module fulladder(Cin, x, y, s, Cout);
+	input Cin, x, y;
+	output s, Cout;
+	wire z1,z2,z3,z4;
+	
+	and (z1,x,y);
+	and (z2,x,Cin);
+	and (z3,y,Cin);
+	or (Cout,z1,z2,z3);
+	xor (z4,x,y);
+	xor (s,z4,Cin);
+	
+endmodule
+
+module alu3(x2,x1,x0,y2,y1,y0,z3,z2,z1,z0);
+	input x2,x1,x0,y2,y1,y0;
+	output z3,z2,z1,z0;
+	
+	fulladder stage0(0,x0,y0,z0,c1);
+	fulladder stage1(c1,x1,y1,z1,c2);
+	fulladder stage2(c2,x2,y2,z2,z3);
+
+endmodule

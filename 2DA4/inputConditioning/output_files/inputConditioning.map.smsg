@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at inputConditioning.v(4): object "y" differs only in case from object "Y" in the same scope File: D:/School Work/SFWRENG 2DA4/inputConditioning/inputConditioning.v Line: 4
+Info (10281): Verilog HDL Declaration information at inputConditioning.v(2): object "a" differs only in case from object "A" in the same scope File: D:/School Work/SFWRENG 2DA4/inputConditioning/inputConditioning.v Line: 2

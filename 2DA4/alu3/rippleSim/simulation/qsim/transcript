@@ -1,0 +1,28 @@
+# do ripple.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:22:06 on Oct 30,2018
+# vlog -work work ripple.vo 
+# -- Compiling module ripple
+# 
+# Top level modules:
+# 	ripple
+# End time: 21:22:06 on Oct 30,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:22:06 on Oct 30,2018
+# vlog -work work Waveform.vwf.vt 
+# -- Compiling module ripple_vlg_vec_tst
+# 
+# Top level modules:
+# 	ripple_vlg_vec_tst
+# End time: 21:22:06 on Oct 30,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.ripple_vlg_vec_tst 
+# Start time: 21:22:06 on Oct 30,2018
+# Loading work.ripple_vlg_vec_tst
+# Loading work.ripple
+# after#23
+# ** Note: $finish    : Waveform.vwf.vt(46)
+#    Time: 1 us  Iteration: 0  Instance: /ripple_vlg_vec_tst
+# End time: 21:22:06 on Oct 30,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

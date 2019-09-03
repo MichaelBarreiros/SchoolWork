@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/School Work/SFWRENG 2DA4/alu3/hexsim/simulation/qsim
+vhex7seg
+!s110 1540948337
+!i10b 1
+!s100 84G?bk7=cfeR8R4LRXKVh1
+In4TX<_d:WBo5zU@N>9Ik;2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1540948336
+8hex7seg.vo
+Fhex7seg.vo
+L0 31
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z3 !s108 1540948337.000000
+!s107 hex7seg.vo|
+!s90 -work|work|hex7seg.vo|
+!i113 1
+Z4 o-work work
+Z5 tCvgOpt 0
+vhex7seg_vlg_vec_tst
+!s110 1540948338
+!i10b 1
+!s100 V]^mYzbTK93SIG9_aRB9i2
+I8k6g;n<TQNz]GRA8mLZ3d0
+R1
+R0
+w1540948333
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R2
+r1
+!s85 0
+31
+R3
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R4
+R5

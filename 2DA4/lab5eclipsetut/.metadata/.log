@@ -1,0 +1,83 @@
+!SESSION 2018-11-20 22:37:00.980 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization D:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization D:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-20 22:38:19.541
+!MESSAGE Indexed 'eclipseTut_bsp' (79 sources, 63 headers) in 1.65 sec: 1,202 declarations; 2,466 references; 109 unresolved inclusions; 6 syntax errors; 191 unresolved names (4.9%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-20 22:38:26.348
+!MESSAGE Indexed 'eclipseTut' (1 sources, 0 headers) in 0.023 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-20 22:48:20.793
+!MESSAGE Indexed 'blinky_bsp' (79 sources, 63 headers) in 0.874 sec: 1,202 declarations; 2,466 references; 109 unresolved inclusions; 6 syntax errors; 191 unresolved names (4.9%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-11-20 22:48:22.667
+!MESSAGE Indexed 'blinky' (1 sources, 0 headers) in 0.007 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+!SESSION 2018-11-21 14:37:04.306 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization D:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization D:/intelfpga/17.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 14:42:49.220
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-21 14:42:54.510
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 14:42:54.657
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/d/SchoolWork/SFWRENG2DA4/qsys_tutorial/software/blinky/blinky.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 14:48:02.444
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 14:48:03.023
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-21 14:48:05.830
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 14:48:05.895
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/d/SchoolWork/SFWRENG2DA4/qsys_tutorial/software/blinky/blinky.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:01:14.631
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:01:15.286
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-21 15:01:18.165
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:01:18.222
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/d/SchoolWork/SFWRENG2DA4/qsys_tutorial/software/blinky/blinky.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:06:42.946
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:06:43.517
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-21 15:06:46.352
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:06:46.416
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/d/SchoolWork/SFWRENG2DA4/qsys_tutorial/software/blinky/blinky.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:14:47.627
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:14:48.220
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2018-11-21 15:14:51.088
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2018-11-21 15:14:51.142
+!MESSAGE Executing: [D:/intelfpga/17.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/d/SchoolWork/SFWRENG2DA4/qsys_tutorial/software/blinky/blinky.elf]

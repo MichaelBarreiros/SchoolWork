@@ -1,0 +1,78 @@
+module combinationalLock(X, Enter, Change, Clock, Reset, leds);
+	input [3:0] X;
+	input Enter, Change, Clock, Reset;
+	output reg leds;
+	reg [3:1] y, Y;
+	parameter [3:1] Default = 3'b000, New = 3'b001, Open = 3'b010, Fault = 3'b011, Alarm = 3'b100; 
+
+	reg [4:1] c;
+	c = 3'b0110;
+	
+	always @(Enter, Change,y)
+	begin
+		case(y)
+			Default: if (X == c && Enter == 0 && Change == 1) 
+							Y = Open;
+							hex7seg(2, leds);
+						else if (X != c && Enter == 0 && Change == 1) 
+							Y = Fault;
+							hex7seg(0, leds);
+						else if (X == c && Enter == 1 && Change == 0) 
+							Y = New;
+							hex7seg(1, leds);
+						else if (X != c && Enter == 1 && Change == 0) 
+							Y = Default;
+							hex7seg(0, leds);
+			Open: 	if (Enter == 0) 
+							Y = Default
+							hex7seg(0, leds);
+						else 
+							Y = Open;
+							hex7seg(2, leds);
+			Fault: 	if (X == c && Enter == 0 && Change == 1) 
+							Y = Open;
+							hex7seg(2, leds);
+						else if (X != c && Enter == 0 && Change == 1) 
+							Y = Alarm;
+							hex7seg(3, leds);
+						else if (X == c && Enter == 1 && Change == 0) 
+							Y = New;
+							hex7seg(1, leds);
+						else if (X != c && Enter == 1 && Change == 0) 
+							Y = Fault;
+							hex7seg(0, leds);
+			New: 		if (Enter == 0 || Change == 0)
+							c = X;
+							Y = Default;
+							hex7seg(0, leds);
+			Alarm: 	Y = Alarm;
+						hex7seg(3, leds);
+		endcase
+	end
+	
+	always @(posedge Clock, negedge Reset)
+		if(Reset == 0) 
+			c <= 3'b0110;
+			y <= Default;
+		else 
+			y <= Y;
+	end
+	
+endmodule
+
+
+module hex7seg(x,leds);
+
+	input [1:0]x;
+	output reg [1:7]leds;
+	always @(x)
+	begin
+		case (x) //abcdefg
+			0: leds = 7'b1111110; //'-'
+			1: leds = 7'b1101010; //'n'
+			2: leds = 7'b0010010; //'O'
+			3: leds = 7'b0001000; //'A'
+		endcase
+	end
+
+endmodule

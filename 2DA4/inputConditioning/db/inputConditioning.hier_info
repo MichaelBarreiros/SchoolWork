@@ -1,0 +1,8 @@
+|inputConditioning
+a => y.A.DATAIN
+a => Y.B.DATAB
+a => Selector0.IN1
+Clock => y~1.DATAIN
+A_pulse << A_pulse.DB_MAX_OUTPUT_PORT_TYPE
+
+

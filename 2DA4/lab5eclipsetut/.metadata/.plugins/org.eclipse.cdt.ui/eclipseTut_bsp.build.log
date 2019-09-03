@@ -1,0 +1,6 @@
+22:38:18 **** Clean-only build of configuration Nios II for project eclipseTut_bsp ****
+make clean 
+[BSP clean complete]
+
+22:38:20 Build Finished (took 2s.353ms)
+

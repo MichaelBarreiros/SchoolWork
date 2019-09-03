@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/School Work/SFWRENG 2DA4/alu3/rippleSim/simulation/qsim
+vripple
+Z1 !s110 1540948926
+!i10b 1
+!s100 K0N2<^>cRjVV27S5^<djg0
+I_`8d8DiA0LhHLkcWA@0k;1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1540948924
+8ripple.vo
+Fripple.vo
+L0 31
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1540948926.000000
+!s107 ripple.vo|
+!s90 -work|work|ripple.vo|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vripple_vlg_vec_tst
+R1
+!i10b 1
+!s100 6T9mIINJ`a5[bgL_YJnRD2
+I6iiOXT:cjc7R]kdMFAW`b2
+R2
+R0
+w1540948921
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R3
+r1
+!s85 0
+31
+R4
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R5
+R6

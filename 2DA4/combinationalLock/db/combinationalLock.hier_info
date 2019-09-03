@@ -1,0 +1,61 @@
+|combinationalLock
+X[0] => Equal0.IN3
+X[0] => combo.DATAB
+X[0] => combo.DATAB
+X[1] => Equal0.IN2
+X[1] => combo.DATAB
+X[1] => combo.DATAB
+X[2] => Equal0.IN1
+X[2] => combo.DATAB
+X[2] => combo.DATAB
+X[3] => Equal0.IN0
+X[3] => combo.DATAB
+X[3] => combo.DATAB
+Enter => Enter.IN1
+Change => Change.IN1
+Clock => Clock.IN2
+Reset => y[1].ACLR
+Reset => y[2].ACLR
+Reset => y[3].ACLR
+Reset => combo[1].ACLR
+Reset => combo[2].PRESET
+Reset => combo[3].PRESET
+Reset => combo[4].ACLR
+leds[7] <= hex7seg:hex.port1
+leds[6] <= hex7seg:hex.port1
+leds[5] <= hex7seg:hex.port1
+leds[4] <= hex7seg:hex.port1
+leds[3] <= hex7seg:hex.port1
+leds[2] <= hex7seg:hex.port1
+leds[1] <= hex7seg:hex.port1
+
+
+|combinationalLock|inputConditioning:comb_3
+a => y.A.DATAIN
+a => Y.B.DATAB
+a => Selector0.IN1
+Clock => y~1.DATAIN
+A_pulse <= A_pulse.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|combinationalLock|inputConditioning:comb_4
+a => y.A.DATAIN
+a => Y.B.DATAB
+a => Selector0.IN1
+Clock => y~1.DATAIN
+A_pulse <= A_pulse.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|combinationalLock|hex7seg:hex
+x[0] => Decoder0.IN2
+x[1] => Decoder0.IN1
+x[2] => Decoder0.IN0
+leds[7] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+leds[6] <= leds.DB_MAX_OUTPUT_PORT_TYPE
+leds[5] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+leds[4] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+leds[3] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+leds[2] <= leds.DB_MAX_OUTPUT_PORT_TYPE
+leds[1] <= leds.DB_MAX_OUTPUT_PORT_TYPE
+
+

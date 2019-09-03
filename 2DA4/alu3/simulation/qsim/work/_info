@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/School Work/SFWRENG 2DA4/alu3/simulation/qsim
+valu3
+!s110 1540947622
+!i10b 1
+!s100 QhA2gl7YdLFmE?Pj:4IZ42
+Id^co;eX>hfXilNaBPT0nj1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1540947621
+8alu3.vo
+Falu3.vo
+L0 31
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z3 !s108 1540947622.000000
+!s107 alu3.vo|
+!s90 -work|work|alu3.vo|
+!i113 1
+Z4 o-work work
+Z5 tCvgOpt 0
+valu3_vlg_vec_tst
+!s110 1540947623
+!i10b 1
+!s100 X30:D9gW@oP[dcf@E[d0=3
+Ib2i0YGOG<1;H<bBFE:;E=0
+R1
+R0
+w1540947618
+8alu3.vwf.vt
+Falu3.vwf.vt
+L0 29
+R2
+r1
+!s85 0
+31
+R3
+!s107 alu3.vwf.vt|
+!s90 -work|work|alu3.vwf.vt|
+!i113 1
+R4
+R5

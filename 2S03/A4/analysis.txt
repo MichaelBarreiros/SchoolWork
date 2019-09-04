@@ -1,0 +1,10 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+ 88.13     16.04    16.04                             comp_distance
+ 11.55     18.14     2.10                             recombine
+  0.28     18.19     0.05                             generate_random_image
+  0.11     18.21     0.02                             mutate
+  0.06     18.22     0.01                             cmpfunc

@@ -1,0 +1,16 @@
+SFWR ENG 2XB3
+Harsh Patel 400132010 Designer, Developer, Debugger, Meeting Minutes
+Torja Istiaque 400081773 Designer, Project Logger/Log Admin
+Michael Barreiros 400124043 Designer, Leader, Developer
+Mustafa Choueib 4001350776 Designer, Developer, Debugger
+Ben Li 400156109 Designer, Developer
+
+The work being submitted on Sunday, April 14th 2019 by Group 2 is our own group work.
+
+The results of the current session of the program is outputted to a txt file in src folder
+under the name "incidents_out.txt"
+
+The program will run from ReadAllocation.java
+
+The graphing algorithm being used was a Red-Black BST and when asking the TA and the instructor it was explicitly said that
+this was allowed. 
